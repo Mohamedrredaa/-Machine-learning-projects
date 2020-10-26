@@ -30,12 +30,12 @@ lb = LabelEncoder()
 y  = lb.fit_transform(y) # M = 1 and B = 0
 
 #splitting the data into training and testing sets 
-X_train, X_test , y_train , y_test = train_test_split(X,y, test_size = 0.1 , random_state=42)
+X_train, X_test , y_train , y_test = train_test_split(X,y, test_size = 0.2 , random_state=42)
 X_train, X_test = FeatureScaling(X_train , X_test)
 
 #Try to find the correlation between features and labels to best tune a model
 from sklearn.decomposition import PCA
-pca = PCA(n_components=5)
+pca = PCA(n_components=2)
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 explain_variance = pca.explained_variance_ratio_ 
